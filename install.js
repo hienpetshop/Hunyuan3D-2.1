@@ -1,6 +1,10 @@
-module.exports = {
+module.exports = async () => ({
+  persist: true,
+  shell: "cmd",
   run: [
-    "pip install --upgrade pip",
-    "pip install -r requirements.txt"
+    "python --version",
+    "where python",
+    "python -m pip install --upgrade pip",
+    "python -m pip install -r requirements.txt"
   ]
-};
+});
