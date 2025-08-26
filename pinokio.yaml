@@ -1,18 +1,12 @@
 name: Hunyuan3D-2.1
-version: "1.0.0"
-type: python
+type: app
+version: 1.0
 
-python: "3.11"
-
-entry: gradio_app.py   # file chính để chạy giao diện Gradio
-requirements: requirements.txt
-
-env:
-  PYTHONUNBUFFERED: "1"
+dependencies:
+  - python@3.10
 
 scripts:
-  start:
-    cmd: python gradio_app.py
-    env:
-      HOST: "0.0.0.0"
-      PORT: "8080"
+  install: |
+    pip install -r requirements.txt
+  start: |
+    python gradio_app.py
