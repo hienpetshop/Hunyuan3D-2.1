@@ -1,14 +1,12 @@
 module.exports = {
+  // chạy trong thư mục gốc của repo
+  path: ".",
   persist: true,
   shell: "cmd",
   run: [
-    "echo === STEP1: SHELL OK ===",
-    "ver",
-    "echo === STEP2: PYTHON PATH ===",
-    "where python || echo NO_PYTHON",
-    "echo === STEP3: PY VERSION ===",
-    "python -V || echo PY_ERROR",
-    "echo === STEP4: PIP INSTALL ===",
+    // kích hoạt env của Pinokio (rất quan trọng)
+    "conda_hook && conda deactivate && conda deactivate && conda activate base",
+    // cài python packages
     "python -m pip install --upgrade pip",
     "python -m pip install -r requirements.txt"
   ]
