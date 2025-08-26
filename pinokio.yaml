@@ -1,16 +1,23 @@
 name: Hunyuan3D-2.1
-version: "1.0.0"
 type: app
+version: "1.0.0"
 
 dependencies:
   - python@3.11
 
 scripts:
-  install: |
-    pip install --upgrade pip
-    pip install -r requirements.txt
-  start: |
-    python gradio_app.py
+  - id: install
+    name: Install requirements
+    run: |
+      pip install --upgrade pip
+      pip install -r requirements.txt
 
-ports:
-  - 8080
+  - id: start
+    name: Start App
+    run: |
+      python gradio_app.py
+    env:
+      GRADIO_SERVER_NAME: "0.0.0.0"
+      GRADIO_SERVER_PORT: "8080"
+    ports:
+      - 8080
