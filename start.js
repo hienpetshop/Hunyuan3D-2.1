@@ -1,4 +1,5 @@
 module.exports = {
+  path: ".",
   persist: true,
   shell: "cmd",
   env: {
@@ -7,7 +8,8 @@ module.exports = {
   },
   ports: [42003],
   run: [
-    "echo === START GRADIO ===",
+    // bắt buộc gọi conda_hook trước khi chạy python
+    "conda_hook && conda deactivate && conda deactivate && conda activate base",
     "python gradio_app.py --host 127.0.0.1 --port 42003"
   ]
 };
