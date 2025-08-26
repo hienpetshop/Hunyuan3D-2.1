@@ -1,5 +1,12 @@
 module.exports = {
+  path: ".",
+  persist: true,
+  shell: "cmd",
   run: [
-    "python -c \"import shutil,os; [shutil.rmtree(p, ignore_errors=True) for p in ['__pycache__','outputs','logs']]\""
+    "echo cleaning cache ...",
+    "rmdir /S /Q __pycache__ 2>nul",
+    "rmdir /S /Q outputs 2>nul",
+    "rmdir /S /Q logs 2>nul",
+    "echo done."
   ]
 };
