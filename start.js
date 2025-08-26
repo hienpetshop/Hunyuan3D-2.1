@@ -1,4 +1,4 @@
-module.exports = async () => ({
+module.exports = {
   persist: true,
   shell: "cmd",
   env: {
@@ -7,6 +7,7 @@ module.exports = async () => ({
   },
   ports: [42003],
   run: [
+    "echo === START GRADIO ===",
     "python gradio_app.py --host 127.0.0.1 --port 42003"
   ]
-});
+};
