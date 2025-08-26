@@ -1,13 +1,21 @@
 module.exports = {
-  // chạy trong thư mục gốc của repo
-  path: ".",
-  persist: true,
-  shell: "cmd",
   run: [
-    // kích hoạt env của Pinokio (rất quan trọng)
-    "conda_hook && conda deactivate && conda deactivate && conda activate base",
-    // cài python packages
-    "python -m pip install --upgrade pip",
-    "python -m pip install -r requirements.txt"
+    // dùng venv riêng tên "env" ngay trong repo, chạy tại thư mục gốc "."
+    {
+      method: "shell.run",
+      params: {
+        venv: "env",
+        path: ".",
+        build: true,
+        message: [
+          "python -m pip install -U pip uv",
+          // cài các gói cần thiết
+          "uv pip install setuptools==65.5.0 wheel",
+          // nếu requirements đã có torch thì giữ nguyên, thiếu thì tự cài thêm
+          "uv pip install -r requirements.txt",
+          "uv pip install sentencepiece"
+        ]
+      }
+    }
   ]
-};
+}
